@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<script>  
+window.localstorage
+function validateform(){  
+var firstname=document.myform.name.value;  
+var secondname=document.myform.name.value;  
+var password=document.myform.password.value;  
+ var email = document.myform.email.value;
+  var atpos = email.indexOf("@");
+  var dotpos = email.lastIndexOf(".");
+if (firstname==null || firstname==""){  
+  alert("Name can't be blank");  
+  return false;
+  if (secondname==null || secondname==""){  
+  alert("Name can't be blank");  
+  return false;
+  
+}else if(password.length<6) {  
+  alert("Password must be at least 6 characters long.");  
+  return false;  
+  } 
+  else if(atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length) {
+    alert("Not a valid e-mail address");
+    return false;
+  }  
+}  
+// Check if the localStorage object exists
+if(localStorage){
+    // Store data
+    localStorage.setItem("first_name", "sow");
+    
+    // Retrieve data
+    alert("Hi, " + localStorage.getItem("first_name"));
+} else{
+    alert("Sorry, your browser do not support local storage.");
+}
+</script>  
+<body>  
+<form name="myform" method="post" action="abc.jsp" onsubmit="return validateform()" >  
+firstName: <input type="text" name="firstname" required><br/>  
+secondName: <input type="text" name="secondname" ><br/>  
+Password: <input type="password" name="password" required><br/> 
+Email: <input type="text" name="email" required> <br/>
+<input type="submit" value="register">  
+</form> 
+
+
+
+</html>
